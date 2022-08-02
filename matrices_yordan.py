@@ -8,7 +8,7 @@ def llenado():
     for i in range(m):
         f=[]
         for j in range(n):
-            f.append(int(input(f'Ingrese el elemento {(i+1,j+1)}:')))
+            f.append(float(input(f'Ingrese el elemento {(i+1,j+1)}:')))
         A.append(f)
     
     return A

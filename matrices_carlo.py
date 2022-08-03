@@ -13,6 +13,7 @@ def run():
             list.append(num)
         array = np.array(list)
         array = array.reshape(n,m)
+        #Le da la forma deseada a la matriz
         return array
 
     print('Ingrese la matriz mensaje:\n ')
@@ -20,9 +21,8 @@ def run():
     print('\nIngrese la matriz encriptación (M):\n ')
     crypt_m = fill()
     reverse_m = np.linalg.inv(crypt_m)
-    print(f'La matriz invversa de M es:\n {reverse_m}')
-    identity = np.dot(crypt_m, reverse_m)
-    print(f'La matriz identidad de M por inversa de M es:\n {identity}')
+    np.set_printoptions(suppress=True)
+    #Los números muy pequeños los convierte de notación científica a decimal
     decrypt_message = np.dot(reverse_m, message)
     print(f'La matriz con el mensaje decodificado es:\n {decrypt_message}')
 

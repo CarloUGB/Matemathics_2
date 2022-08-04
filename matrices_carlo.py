@@ -3,16 +3,9 @@
 def run():
     import numpy as np
 
-    def rows():
-         n = int(input('Ingrese el número de filas:'))
-         return n
-
-    def columns():
+    def fill():
+        n = int(input('Ingrese el número de filas:'))
         m = int(input('Ingrese el número de columnas: '))
-        return m
-
-
-    def fill(n,m):
         print('Ingrese los elementos de la matriz, de izquierda a derecha en orden descendente: ')
         list=[]
         for i in range(n*m):
@@ -24,13 +17,9 @@ def run():
         return array
 
     print('Ingrese la matriz mensaje:\n ')
-    n_1 = rows()
-    m_1 = columns()
-    message = fill(n_1,m_1)
+    message = fill()
     print('\nIngrese la matriz encriptación (M):\n ')
-    n_2 = rows()
-    m_2 = columns()
-    crypt_m = fill(n_2,m_2)
+    crypt_m = fill()
 
     reverse_m = np.linalg.inv(crypt_m)
     np.set_printoptions(suppress=True)
@@ -40,8 +29,7 @@ def run():
     #Transpuesta de la matriz
     dm_Trow = dm_T.ravel()
     #Aplana la transpuesta, formando una matriz renglón
-    print(f'La matriz con el mensaje decodificado es:\n {dm_Trow}')
-    
+    print(f'La matriz con el mensaje decodificado es:\n {dm_Trow}')  
 
 #Aquí es donde se corre la función, repito, no es necesario pero es una buena práctica
 if __name__ == '__main__':

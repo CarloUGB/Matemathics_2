@@ -1,7 +1,12 @@
-#Esta es una función principal, no es necesaria para este ejercicio
-#pero aprendí que es una buena práctica
+#Este programa sólo funciona con matrices encripatadas de dos filas
+#Dará error si el mensaje final presenta un cero como espacio
 def run():
     import numpy as np
+    import string
+
+    num2alpha =dict(zip(range(1,27),string.ascii_letters))
+    #Crea un diccionario con la enumarción ascii en inglés. El cero no lo toma en cuenta, por eso no
+    #lo pude colocar en la matriz del documento de word, espero se entienda.
 
     def fill():
         n = int(input('Ingrese el número de filas:'))
@@ -29,8 +34,10 @@ def run():
     #Transpuesta de la matriz
     dm_Trow = dm_T.ravel()
     #Aplana la transpuesta, formando una matriz renglón
-    print(f'La matriz con el mensaje decodificado es:\n {dm_Trow}')  
-
-#Aquí es donde se corre la función, repito, no es necesario pero es una buena práctica
+    dm_Trowlist = dm_Trow.flatten().tolist()
+    # Lo convierte en texto, y luego en lista python
+    for num in dm_Trowlist:
+        print(num2alpha[num])   
+     
 if __name__ == '__main__':
     run()

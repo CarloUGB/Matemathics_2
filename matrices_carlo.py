@@ -1,5 +1,5 @@
 #Este programa sólo funciona con matrices encripatadas de dos filas
-#Dará error si el mensaje final presenta un cero como espacio
+#Dará error si el mensaje encripatdo o el descencriptado lleva un cero
 def run():
     import numpy as np
     import string
@@ -11,11 +11,13 @@ def run():
     def fill():
         n = int(input('Ingrese el número de filas:'))
         m = int(input('Ingrese el número de columnas: '))
-        print('Ingrese los elementos de la matriz, de izquierda a derecha en orden descendente: ')
+        
         list=[]
-        for i in range(n*m):
-            num = float(input(f'Elemento {i+1}: '))
-            list.append(num)
+        print('Ingrese los elementos de la matriz: ')
+        for i in range(n):
+            for j in range(m):
+                num = float(input(f'Elemento {i+1},{j+1}: '))
+                list.append(num)
         array = np.array(list)
         array = array.reshape(n,m)
         #Le da la forma deseada a la matriz
@@ -27,8 +29,7 @@ def run():
     crypt_m = fill()
 
     reverse_m = np.linalg.inv(crypt_m)
-    np.set_printoptions(suppress=True)
-    #Los números muy pequeños los convierte de notación científica a decimal
+    #Me enteré de que no todas las matrices cuadradas tienen inversa
     decrypt_message = np.dot(reverse_m, message)
     dm_T = decrypt_message.T
     #Transpuesta de la matriz
@@ -36,6 +37,7 @@ def run():
     #Aplana la transpuesta, formando una matriz renglón
     dm_Trowlist = dm_Trow.flatten().tolist()
     # Lo convierte en texto, y luego en lista python
+    print("EL MENSAJE DECIFRADO DICE: ")
     for num in dm_Trowlist:
         print(num2alpha[num])   
      

@@ -15,5 +15,5 @@ def determinate():
     pass
 
 
-print("ingrese la matriz de 3x4: ")
+print("ingrese la matriz de 3x3: ")
 print(llenado())
